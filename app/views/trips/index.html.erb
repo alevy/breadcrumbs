@@ -1,0 +1,18 @@
+<h1>My Trips</h1>
+<% if !@trips.blank? %>
+<ol id="index">
+  <% @trips.each do |trip| %>
+  <li>
+    <h2><%= link_to trip.title, trip %></h2>
+    <p>
+      Created <%= date_str(trip.created_at) %>.
+      <%= pluralize trip.posts.count, "post" %>,
+      <%= pluralize trip.checkins.count, "checkin" %>
+    </p>
+  </li>
+  <% end %>
+<% else %>
+<p>No trips yet...</p>
+<% end%>
+</ol>
+

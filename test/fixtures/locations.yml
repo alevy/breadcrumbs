@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  city: MyString
+  administrative_zone: MyString
+  country: MyString
+  region: MyString
+
+two:
+  city: MyString
+  administrative_zone: MyString
+  country: MyString
+  region: MyString

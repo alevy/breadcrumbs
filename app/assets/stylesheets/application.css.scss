@@ -1,0 +1,121 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree
+*/
+
+@import "fonts.scss";
+
+body {
+  background-color: #F1F1F1;
+  font-family: $serif;
+}
+
+h1, h2, h3, h4 {
+  margin: 0px;
+  font-family: $sans-serif;
+  & a {
+    color: inherit;
+    text-decoration: inherit;
+  }
+}
+
+hr {
+	background-color: #e7e7e7;
+	border: 0;
+	clear: both;
+	height: 1px;
+	margin-bottom: 18px;
+}
+
+#container {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 940px;
+  background-color: white;
+  padding: 0 20px;
+}
+
+#header {
+  padding-top: 30px;
+  h1 {
+    float: left;
+    font-size: 30px;
+    margin: 0 0 18px 0;
+  }
+  
+  h2 {
+    clear: right;
+    float: right;
+    margin: 15px 0 18px 0;
+    font: 12px $serif;
+    font-weight: normal;
+    font-style: italic;
+    width: 220px;
+    color: #666;
+  }
+  
+  height: 55px
+}
+
+#navigation {
+  background: url('/assets/path.jpg') no-repeat;
+  border-top: 3px solid black;
+  font: 13px $sans-serif;
+  ul {
+    background-color: black;
+    color: white;
+    height: 38px;
+    & a {
+      display: block;
+      color: inherit;
+      text-decoration: inherit;
+      padding-left: 15px;
+      padding-right: 15px;
+      &:hover {
+        background-color: #333;
+        color: white;
+      }
+    }
+    margin-top: 198px;
+    padding-left: 10px;
+    list-style: none;
+    li {
+      height: 38px;
+      line-height: 38px;
+      float: left;
+      color: #aaa;
+      vertical-align: middle;
+      text-align: center;
+    }
+  }
+}
+
+#footer {
+  clear: both;
+  height: 50px;
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 3px solid black;
+  h1.title {
+    font-size: 16px;
+    float: left;
+  }
+  p.copyright {
+    float: right;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.error, .alert, .notice, .success, .info {padding:0.8em;margin-bottom:1em;border:2px solid #ddd;}
+.error, .alert {background:#fbe3e4;color:#8a1f11;border-color:#fbc2c4;}
+.notice {background:#fff6bf;color:#514721;border-color:#ffd324;}
+.success {background:#e6efc2;color:#264409;border-color:#c6d880;}
+.info {background:#d5edf8;color:#205791;border-color:#92cae4;}
+.error a, .alert a {color:#8a1f11;}
+.notice a {color:#514721;}
+.success a {color:#264409;}
+.info a {color:#205791;}

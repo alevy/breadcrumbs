@@ -1,0 +1,34 @@
+@import "fonts.scss";
+
+.post {
+  padding: 1.5em;
+}
+
+.comments {
+  margin-top: 4em;
+  ol {
+    list-style: none;
+    position: relative;
+    padding: 0px;
+    li {
+      padding: 5px;
+      padding-left: 50px;
+      margin: 5px;
+    }
+    li img {
+      position: absolute;
+      left: 10px;
+    }
+  }
+}
+
+.byline {
+  margin: 0px;
+  color: #888;
+  font: 12px $sans-serif;
+  a {
+    color: inherit;
+  }
+}
+
+

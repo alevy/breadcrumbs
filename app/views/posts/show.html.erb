@@ -1,0 +1,46 @@
+<div class="post">
+  <h2><%= link_to @post.title, @post %></h2>
+  <%= render :partial => "details", :locals => {:post => @post } %>
+  <div class="body">
+    <%= raw Maruku.new(@post.body).to_html %>
+  </div>
+  <% admin do %>
+  <p>
+    <%= link_to "Edit Post", edit_post_path(@post) %> |
+    <%= link_to 'Delete Post', @post, confirm: 'Are you sure?', method: :delete %>
+  </p>
+  <% end %>
+  <div class="comments">
+  <% if !@post.comments.blank? %>
+    <%= pluralize @post.comments.size, "response" %> to <em><%= @post.title %></em>
+    <ol>
+    <% @post.comments.each do |comment| %>
+      <li id="comment-<%= comment.id %>">
+        <p class="name">
+          <%= image_tag gravatar(comment.email), :height => 40, :width => 40 %>
+          <% if comment.website.blank? %>
+            <%= comment.name %>
+          <% else %>
+            <%= link_to comment.name, comment.website %>
+          <% end %>says:
+        </p>
+        <p class="byline"><%= link_to "#{date_str(comment.created_at)} at #{time_str(comment.created_at)}", "#comment-#{comment.id}" %></p>
+        <p class="comment">
+          <%= comment.comment %>
+        </p>
+        <p class="byline">
+          <%= link_to "Reply", "#new_comment_form"%>
+          <%- admin do %>| <%= link_to raw('&#x2717 Remove Comment'), comment, confirm: 'Are you sure?', method: :delete %><%- end %>
+        </p>
+      </li>
+    <% end %>
+    </ol>
+  <% end %>
+  <hr/>
+  <div id="new_comment_form">
+    <h3>Leave a comment</h3>
+    <p>Your email address will not be published.</p>
+    <%= render :partial => "comments/form", :locals => {:comment => @comment || Comment.new(:post => @post) } %>
+  </div>
+  </div>
+</div>

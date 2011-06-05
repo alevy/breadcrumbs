@@ -1,0 +1,15 @@
+<h1>Places I've Been</h1>
+<div class="locations">
+<% if !@locations.blank? %>
+  <ul>
+  <% for region in @locations.select("distinct region") %>
+    <li>
+      <h2><%= link_to location.city, location %></h2>
+    </li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>No locations logged yet...</p>
+<% end %>
+</div>
+<%= admin do link_to 'New Location', new_location_path end %>

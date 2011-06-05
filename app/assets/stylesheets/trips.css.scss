@@ -1,0 +1,30 @@
+@import "fonts.scss";
+
+#tripscontroller {
+  
+  ol#index {
+    list-style: none;
+    padding:0;
+    li p {
+      padding-left: 20px;
+      font: 13px $serif;
+    }
+  }
+  
+  #posts {
+    float: left;
+    width: 40%;
+  }
+  
+  #checkins {
+    float: right;
+    width: 40%;
+    ol {
+      list-style: none;
+      padding: 0px;
+      li p {
+        font: 13px $serif;
+      }
+    }
+  }
+}
