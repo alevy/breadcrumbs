@@ -1,3 +1,6 @@
+ENV["ADMIN_USER"]="admin"
+ENV["ADMIN_PASSWORD"]="$2a$10$F.ig4de50.NNMpqwScB4dOUl4AR2108/qPVg4JiGKLaWIcSqdEERC" # "password"
+
 Breadcrumbs::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
