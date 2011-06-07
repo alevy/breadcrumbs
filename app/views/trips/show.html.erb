@@ -1,4 +1,10 @@
 <h1><%= @trip.title %></h1>
+<% admin do %>
+<p>
+  <%= link_to "New Post", new_post_path(:trip_id => @trip.id) %> |
+  <%= link_to "New Checkin", new_trip_checkin_path(@trip) %>
+</p>
+<% end %>
 <div id="posts">
 <h2>Posts</h2>
 <% if !@trip.posts.blank? %>

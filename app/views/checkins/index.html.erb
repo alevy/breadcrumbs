@@ -1,27 +1,20 @@
-<h1>Listing checkins</h1>
+<h1>Places I've Been</h1>
 
-<table>
-  <tr>
-    <th>Trip</th>
-    <th>Location</th>
-    <th>Arrival date</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @checkins.each do |checkin| %>
-  <tr>
-    <td><%= checkin.trip %></td>
-    <td><%= checkin.location %></td>
-    <td><%= checkin.arrival_date %></td>
-    <td><%= link_to 'Show', checkin %></td>
-    <td><%= link_to 'Edit', edit_checkin_path(checkin) %></td>
-    <td><%= link_to 'Destroy', checkin, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+<% if !@checkins.blank? %>
+<ul>
+  <% for region, checkins in @checkins.group_by {|c| c.location.region } %>
+  <li><%= region %>
+    <ul>
+    <% for country, checkins in checkins.group_by {|c| c.location.country } %>
+      <li><%= country %>:
+        <%= raw checkins.map {|checkin| link_to checkin.location.city, checkin }.join(", ") %>
+      </li>
+    <% end %>
+    </ul>
+  </li>
+  <% end %>
+</ul>
+<% else %>
+  
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Checkin', new_checkin_path %>

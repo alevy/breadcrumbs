@@ -1,2 +1,11 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+$(function() {
+  $("#checkinscontroller").ready(function() {
+    $.history.init(function(hash) {
+      if (hash == "new_location") {
+        $("#checkinscontroller #new_location").show();
+      } else {
+        $("#checkinscontroller #new_location").hide();
+      }
+    });
+  });
+});
