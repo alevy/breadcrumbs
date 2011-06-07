@@ -9,8 +9,9 @@ gem 'maruku'
 
 # Asset template engines
 gem 'sass'
+gem 'therubyracer-heroku', '~>0.8.0', :group => :production
 gem 'coffee-script'
-gem 'uglifier'
+gem 'uglifier', '~>0.5.0'
 
 gem 'jquery-rails'
 
