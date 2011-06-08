@@ -1,15 +1,16 @@
 <div class="post">
-  <h2><%= link_to @post.title, @post %></h2>
+  <h1><%= link_to @post.title, @post %></h1>
   <%= render :partial => "details", :locals => {:post => @post } %>
+  <% admin do %>
+  <nav>
+    <ul>
+      <li><%= link_to "Edit Post", edit_post_path(@post) %></li>
+      <li><%= link_to "Delete Post", @post, :method => :delete, :confirm => "Are you sure?" %></li>
+  </nav>
+  <% end %>
   <div class="body">
     <%= raw Maruku.new(@post.body).to_html %>
   </div>
-  <% admin do %>
-  <p>
-    <%= link_to "Edit Post", edit_post_path(@post) %> |
-    <%= link_to 'Delete Post', @post, confirm: 'Are you sure?', method: :delete %>
-  </p>
-  <% end %>
   <div class="comments">
   <% if !@post.comments.blank? %>
     <%= pluralize @post.comments.size, "response" %> to <em><%= @post.title %></em>

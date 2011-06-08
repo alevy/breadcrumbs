@@ -1,2 +1,8 @@
+<% admin do %>
+<nav>
+  <ul>
+    <li><%= link_to "New Post", new_post_path %></li>
+  </ul>
+</nav>
+<% end %>
 <%= render :partial => "posts", :locals => { :posts => @posts }%>
-<% admin do %><%= link_to "New Post", new_post_path %><% end %>

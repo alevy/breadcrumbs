@@ -8,25 +8,24 @@
 </head>
 <body id="<%= controller.class.to_s.parameterize %>">
 <div id="container">
-  <div id="header">
+  <header>
     <h1 class="title"><%= link_to "Amit's Travel Blog", "/" %></h1>
     <h2>A trail of breadcrumbs...</h2>
-  </div>
-
-  <div id="navigation">
-    <ul>
-      <li><%= link_to "Posts", root_path %></li>
-      <li><%= link_to "My Trips", trips_path %></li>
-      <li><%= link_to "Places I've Been", checkins_path %></li>
-    </ul>
-  </div>
+    <nav>
+      <ul>
+        <li><%= link_to "Posts", root_path %></li>
+        <li><%= link_to "My Trips", trips_path %></li>
+        <li><%= link_to "Places I've Been", checkins_path %></li>
+      </ul>
+    </nav>
+  </header>
   <% if notice %><p class="notice"><%= notice %></p><% end %>
   <% if alert %><p class="alert"><%= alert %></p><% end %>
   <%= yield %>
-  <div id="footer">
+  <footer>
     <h1 class="title">Amit's Travel Blog</h1>
     <p class="copyright">Copyright (c) Amit Levy 2011</p>
-  </div>
+  </footer>
 </div>
 </body>
 </html>

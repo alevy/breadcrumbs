@@ -1,6 +1,9 @@
 <h1>Posts from <%= @location.name %></h1>
-<%= render :partial => "posts/posts", :locals => {:posts => @location.posts } %>
-
 <% admin do %>
-<%= link_to 'Edit Location', edit_location_path(@location) %>
+<nav>
+  <ul>
+    <li><%= link_to 'Edit Location', edit_location_path(@location) %></li>
+  </ul>
+</nav>
 <% end %>
+<%= render :partial => "posts/posts", :locals => {:posts => @location.posts } %>

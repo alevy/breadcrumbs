@@ -1,13 +1,15 @@
 <h1><%= @trip.title %></h1>
 <% admin do %>
-<p>
-  <%= link_to "New Post", new_post_path(:trip_id => @trip.id) %> |
-  <%= link_to "New Checkin", new_trip_checkin_path(@trip) %>
-</p>
+<nav>
+  <ul>
+    <li><%= link_to "New Post", new_post_path(:trip_id => @trip.id) %></li>
+    <li><%= link_to "New Checkin", new_trip_checkin_path(@trip) %></li>
+  </ul>
+</nav>
 <% end %>
-<div id="posts">
 <h2>Posts</h2>
 <% if !@trip.posts.blank? %>
+<div id="posts">
   <% @trip.posts.each do |post| %>
   <div class="post">
     <h3><%= link_to post.title, post %></h3>
@@ -15,6 +17,7 @@
     <div class="body"><%= raw Maruku.new(post.body).to_html %></div>
   </div>
   <% end %>
+</div>
 <% else %>
 <p>No posts for this trip yet...</p>
 <% end %>

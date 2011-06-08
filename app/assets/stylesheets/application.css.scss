@@ -38,7 +38,7 @@ hr {
   padding: 0 20px;
 }
 
-#header {
+header {
   padding-top: 30px;
   h1 {
     float: left;
@@ -56,11 +56,10 @@ hr {
     width: 220px;
     color: #666;
   }
-  
-  height: 55px
 }
 
-#navigation {
+header nav {
+  clear: both;
   background: url('/assets/path.jpg') no-repeat;
   border-top: 3px solid black;
   font: 13px $sans-serif;
@@ -68,6 +67,9 @@ hr {
     background-color: black;
     color: white;
     height: 38px;
+    margin-top: 198px;
+    padding-left: 10px;
+    list-style: none;
     & a {
       display: block;
       color: inherit;
@@ -79,9 +81,6 @@ hr {
         color: white;
       }
     }
-    margin-top: 198px;
-    padding-left: 10px;
-    list-style: none;
     li {
       height: 38px;
       line-height: 38px;
@@ -89,11 +88,30 @@ hr {
       color: #aaa;
       vertical-align: middle;
       text-align: center;
+      &:after {
+        content: "";
+      }
     }
   }
 }
 
-#footer {
+nav {
+  ul {
+    list-style: none;
+    padding-left: 0;
+    li {
+      display: inline;
+      &:after {
+        content: " |"
+      }
+      &:last-child:after {
+        content: "";
+      }
+    }
+  }
+}
+
+footer {
   clear: both;
   height: 50px;
   margin-top: 50px;

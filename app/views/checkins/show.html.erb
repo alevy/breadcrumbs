@@ -1,6 +1,11 @@
 <h1><%= @checkin.trip.title %></h1>
 <h2><%= @checkin.location.name %></h2>
+<% admin do %>
+<nav>
+  <ul>
+    <li><%= link_to 'Edit', edit_checkin_path(@checkin) %></li>
+    <li><%= link_to 'Destroy', @checkin, :method => :delete, :confirm => "Are you sure?" %></li>
+  </ul>
+</nav>
+<% end %>
 <%= render :partial => "posts/posts", :locals => {:posts => @checkin.posts } %>
-
-<%= link_to 'Edit', edit_checkin_path(@checkin) %> |
-<%= link_to 'Back', checkins_path %>

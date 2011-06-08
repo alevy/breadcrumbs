@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to post_path(@comment.post) }
+      format.html { redirect_to post_path(@comment.post), notice: 'Comment was successfully deleted.' }
       format.json { head :ok }
     end
   end
