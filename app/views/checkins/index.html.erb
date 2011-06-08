@@ -7,7 +7,7 @@
     <ul>
     <% for country, checkins in checkins.group_by {|c| c.location.country } %>
       <li><%= country %>:
-        <%= raw checkins.map {|checkin| link_to checkin.location.city, checkin }.join(", ") %>
+        <%= raw checkins.map {|checkin| link_to checkin.location.city, checkin.location }.join(", ") %>
       </li>
     <% end %>
     </ul>

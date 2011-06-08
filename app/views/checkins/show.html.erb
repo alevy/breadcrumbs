@@ -1,20 +1,6 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Trip:</b>
-  <%= @checkin.trip %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @checkin.location %>
-</p>
-
-<p>
-  <b>Arrival date:</b>
-  <%= @checkin.arrival_date %>
-</p>
-
+<h1><%= @checkin.trip.title %></h1>
+<h2><%= @checkin.location.name %></h2>
+<%= render :partial => "posts/posts", :locals => {:posts => @checkin.posts } %>
 
 <%= link_to 'Edit', edit_checkin_path(@checkin) %> |
 <%= link_to 'Back', checkins_path %>

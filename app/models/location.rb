@@ -1,5 +1,6 @@
 class Location < ActiveRecord::Base
   has_many :checkins
+  has_many :posts, :through => :checkins
   
   def name
     if administrative_zone
