@@ -1,4 +1,4 @@
-<%= form_for(@checkin) do |f| %>
+<%= form_for([@checkin.trip, @checkin]) do |f| %>
   <% if @checkin.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@checkin.errors.count, "error") %> prohibited this checkin from being saved:</h2>
@@ -16,8 +16,9 @@
     <%= f.collection_select :trip_id, Trip.all, :id, :title %>
   </div>
   <div class="field">
-    <%= f.label :location_id, "Location" %><br />
-    <%= f.collection_select :location_id, Location.all, :id, :name %>
+    <%= f.label :location_id, "Location" %>: <span class="location_name">Search below</span><br />
+    <input type="text" id="checkin_location_name" placeholder="Search for location">
+    <%= f.hidden_field :location_id %>
     <%= link_to "New Location", "#new_location" %>
   </div>
   <div class="field">

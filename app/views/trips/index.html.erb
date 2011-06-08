@@ -1,4 +1,10 @@
 <h1>My Trips</h1>
+<% admin do %>
+<nav>
+  <ul>
+    <li><%= link_to "New Trip", new_trip_path %></li>
+  </ul>
+</nav><% end %>
 <% if !@trips.blank? %>
 <ol id="index">
   <% @trips.each do |trip| %>
@@ -15,5 +21,3 @@
 <p>No trips yet...</p>
 <% end%>
 </ol>
-
-<% admin do %><%= link_to "New Trip", new_trip_path %><% end %>

@@ -9,4 +9,10 @@ class Location < ActiveRecord::Base
       "#{city}, #{country}"
     end
   end
+  
+  def to_json(options)
+    options[:methods] ||= []
+    options[:methods] << :name
+    super(options)
+  end
 end

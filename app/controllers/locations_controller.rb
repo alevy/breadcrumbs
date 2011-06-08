@@ -5,14 +5,14 @@ class LocationsController < ApplicationController
   # GET /locations.json
   def index
     @locations = Location.order
-    (params[:q] || "").split(/\s/).each do |q|
+    (params[:term] || "").split(/\s/).each do |q|
       q = "%#{q}%"
       @locations = @locations.where("city LIKE ? or administrative_zone LIKE ? or country LIKE ? or region LIKE ?", q, q, q, q)
     end
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @locations }
+      format.json { render json: @locations, :methods => [:name] }
     end
   end
 
