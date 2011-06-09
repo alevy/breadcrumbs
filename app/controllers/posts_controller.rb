@@ -69,8 +69,12 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
 
+    if params[:preview]
+      @post.valid?
+    end
+
     respond_to do |format|
-      if @post.update_attributes(params[:post])
+      if not params[:preview] and @post.update_attributes(params[:post])
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :ok }
       else
