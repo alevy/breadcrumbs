@@ -22,7 +22,7 @@
   </div>
   
   <div class="field">
-    <%= f.label :checkin_id, "Trip" %><br />
+    <%= f.label :checkin_id, "Checkin" %><br />
     <%= f.collection_select :checkin_id, Checkin.all, :id, :"location_name", :include_blank => true %>
   </div>
   

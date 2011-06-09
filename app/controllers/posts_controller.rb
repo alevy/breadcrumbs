@@ -27,6 +27,11 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
+    if @post.checkin_id = params[:checkin_id]
+      @post.trip_id = @post.checkin.trip_id
+    else
+      @post.trip_id = params[:trip_id]
+    end
 
     respond_to do |format|
       format.html # new.html.erb

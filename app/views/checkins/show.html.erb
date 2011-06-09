@@ -3,8 +3,9 @@
 <% admin do %>
 <nav>
   <ul>
-    <li><%= link_to 'Edit', edit_checkin_path(@checkin) %></li>
-    <li><%= link_to 'Destroy', @checkin, :method => :delete, :confirm => "Are you sure?" %></li>
+    <li><%= link_to 'New Post at Checkin', new_post_path(:checkin_id => @checkin) %></li>
+    <li><%= link_to 'Edit Checkin', edit_checkin_path(@checkin) %></li>
+    <li><%= link_to 'Destroy Checkin', @checkin, :method => :delete, :confirm => "Are you sure?" %></li>
   </ul>
 </nav>
 <% end %>
