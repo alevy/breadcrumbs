@@ -25,9 +25,15 @@ class CommentTest < ActiveSupport::TestCase
     assert_equal 1, comment.errors["email"].size
   end
   
-  test "Website must begin with (http or https)://" do
+  test "Website without protocol is corrent automatically" do
     comment = Comment.new(
-              :name => "Jane", :email =>"c@example.com", :comment => "Hello world", :website => "www.courtlandstanton.com")
+              :name => "Jane", :email =>"c@example.com", :comment => "Hello world", :website => "www.courtlandtstanton.com")
+    assert_equal "http://www.courtlandtstanton.com", comment.website
+  end
+  
+  test "Website withouth (http or https):// is not valid" do
+    comment = Comment.new(
+              :name => "Jane", :email =>"c@example.com", :comment => "Hello world", :website => "smtp://www.courtlandstanton.com")
     comment.valid?
     assert_equal 1, comment.errors["website"].size
   end
