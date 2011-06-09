@@ -1,6 +1,6 @@
 <div class="post">
   <h1><%= link_to @post.title, @post %></h1>
-  <%= render :partial => "details", :locals => {:post => @post } %>
+  <%= render :partial => "posts/details", :locals => {:post => @post } %>
   <% admin do %>
   <nav>
     <ul>
@@ -12,8 +12,8 @@
     <%= raw Maruku.new(@post.body).to_html %>
   </div>
   <div class="comments">
-  <% if !@post.comments.blank? %>
-    <%= pluralize @post.comments.size, "response" %> to <em><%= @post.title %></em>
+  <% if !@post.comments.approved.blank? %>
+    <%= pluralize @post.comments.approved.size, "response" %> to <em><%= @post.title %></em>
     <ol>
     <% @post.comments.each do |comment| %>
       <li id="comment-<%= comment.id %>">
