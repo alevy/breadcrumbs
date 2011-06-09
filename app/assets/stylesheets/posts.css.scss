@@ -1,5 +1,17 @@
 @import "fonts.scss";
 
+#postscontroller {
+  form, #post_preview {
+    float: left;
+  }
+  
+  #post_preview {
+    margin-left: 1em;
+    border: 1px solid #999;
+    width: 400px;
+  }
+}
+
 .posts {
   padding: 1.5em;
 }

@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
-    if @post.checkin_id = params[:checkin_id]
+    if (@post.checkin_id = params[:checkin_id])
       @post.trip_id = @post.checkin.trip_id
     else
       @post.trip_id = params[:trip_id]
@@ -48,9 +48,13 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(params[:post])
-
+    
+    if params[:preview]
+      @post.valid?
+    end
+    
     respond_to do |format|
-      if @post.save
+      if not params[:preview] and @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else

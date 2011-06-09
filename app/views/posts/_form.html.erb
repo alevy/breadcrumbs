@@ -32,5 +32,12 @@
   </div>
   <div class="actions">
     <%= f.submit %>
+    <%= f.submit "Preview", :name => :preview %>
   </div>
+<% end %>
+<% if params[:preview] %>
+<div id="post_preview">
+  <h3>Preview:</h3>
+  <%= raw Maruku.new(@post.body).to_html %>
+</div>
 <% end %>
