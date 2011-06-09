@@ -7,4 +7,5 @@ class Comment < ActiveRecord::Base
   validates_presence_of :name, :on => :create, :message => "can't be blank"
   validates_format_of :email, :with => /^[\w\d\.]+@[\w\d\.]+$/, :on => :create, :message => "is invalid"
   validates_presence_of :comment, :on => :create, :message => "can't be blank"
+  validates_format_of :website, :with => /^https?:\/\//, :on => :create, :message => "must begin with http:// or https://"
 end

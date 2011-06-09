@@ -13,17 +13,17 @@
 
   <div class="field required">
     <%= f.label :name %><br/>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :placeholder => "Jane Doe" %>
   </div>
   
   <div class="field required">
     <%= f.label :email, "E-mail" %><br/>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :placeholder => "jdoe@example.com" %>
   </div>
   
   <div class="field">
     <%= f.label :website %><br/>
-    <%= f.text_field :website %>
+    <%= f.text_field :website, :placeholder => "http://www.example.com" %>
   </div>
 
   <div class="field required">
