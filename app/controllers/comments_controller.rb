@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
   def approve
     @comment = Comment.find(params[:id])
     @comment.approved = true
-    @comment.save
+    @comment.save!
     respond_to do |format|
       format.html { redirect_to comments_path, notice: 'Comment was approved' }
       format.json { head :ok }
