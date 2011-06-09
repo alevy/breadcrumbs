@@ -1,10 +1,25 @@
 class CommentsController < ApplicationController
   before_filter :authenticate!, :except => [:create]
   
+  def index
+    @comments = Comment.pending
+  end
+  
+  def approve
+    @comment = Comment.find(params[:id])
+    @comment.approved = true
+    @comment.save
+    respond_to do |format|
+      format.html { redirect_to comments_path, notice: 'Comment was approved' }
+      format.json { head :ok }
+    end
+  end
+  
   # POST /comments
   # POST /comments.json
   def create
     @comment = Comment.new(params[:comment])
+    @comment.approved = false
     @comment.post_id = params[:post_id]
     @post = @comment.post
 

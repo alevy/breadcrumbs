@@ -1,0 +1,29 @@
+<h2>Pending Comments</h2>
+<div class="comments">
+<% if !@comments.blank? %>
+  <ol>
+  <% @comments.each do |comment| %>
+    <li id="comment-<%= comment.id %>">
+      <p class="name">
+        <%= image_tag gravatar(comment.email), :height => 40, :width => 40 %>
+        <% if comment.website.blank? %>
+          <%= comment.name %>
+        <% else %>
+          <%= link_to comment.name, comment.website %>
+        <% end %>says:
+      </p>
+      <p class="byline"><%= link_to "#{date_str(comment.created_at)} at #{time_str(comment.created_at)}", "#comment-#{comment.id}" %></p>
+      <p class="comment">
+        <%= comment.comment %>
+      </p>
+      <p class="byline">
+        <%- admin do %><%= link_to "Approve", approve_comment_path(comment), :method => :post %> |
+        <%= link_to raw('&#x2717 Delete Comment'), comment, confirm: 'Are you sure?', method: :delete %><%- end %>
+      </p>
+    </li>
+  <% end %>
+  </ol>
+<% else %>
+<p>No comments pending</p>
+<% end %>
+</div>

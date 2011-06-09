@@ -7,7 +7,11 @@ Breadcrumbs::Application.routes.draw do
     resources :checkins, :only => [:new, :create]
   end
 
-  resources :comments, :only => [:destroy]
+  resources :comments, :except => [:create] do
+    member do
+      post 'approve'
+    end
+  end
 
   resources :posts do
     resources :comments, :only => [:create]
