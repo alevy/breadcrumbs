@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.atom
       format.rss
       format.json { render json: @posts }
     end
