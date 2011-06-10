@@ -19,6 +19,8 @@ class TripsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.atom
+      format.rss
       format.json { render json: @trip }
     end
   end

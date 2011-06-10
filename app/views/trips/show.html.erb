@@ -1,3 +1,7 @@
+<% content_for(:head) do %>
+<%= auto_discovery_link_tag(:atom, trip_url(@trip, :format => :atom), :title => "Amit's Travel Blog - #{@trip.title} - Atom Feed") %>
+<%= auto_discovery_link_tag(:rss, trip_url(@trip, :format => :rss), :title => "Amit's Travel Blog - #{@trip.title} - RSS Feed") %>
+<% end %>
 <h1><%= @trip.title %></h1>
 <% admin do %>
 <nav>
