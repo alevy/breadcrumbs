@@ -1,29 +1,47 @@
 $(function() {
+  
+  var setLocation = function(id, name) {
+    $("#checkin_location_name").val("")
+    $("#checkin_location_name").parent().children("span.location_name").html(name);
+    $("#checkin_location_id").val(id);
+  }
+  
   $("#checkinscontroller").ready(function() {
+    $("#checkinscontroller #new_location input[type='submit']").hide();
+    $("#checkinscontroller #new_location").dialog({
+    			autoOpen: false,
+    			height: 400,
+    			width: 350,
+    			modal: true,
+    			buttons: {
+    			  "Create Location": function() {
+    			    $(this).submit();
+    			  },
+    			  Cancel: function() {
+          		$( this ).dialog( "close" );
+          	}
+          },
+    			close: function() {
+    			  $.history.load("");
+    			}});
+    $("#checkinscontroller form#new_location").submit(function() {
+      $.post("/locations.json", $(this).serialize(), function(data) {
+        setLocation(data.id, data.name);
+        $("#checkinscontroller #new_location").dialog("close");
+        var notice = $("<p class=\"notice\">Location successfully created</p>");
+        notice.insertAfter("header");
+        notice.fadeOut(2000, function() { notice.remove(); });
+      });
+      return false;
+    });
     $.history.init(function(hash) {
       if (hash == "new_location") {
-        $("#checkinscontroller #new_location").show();
+        $("#checkinscontroller #new_location").dialog("open");
       } else {
-        $("#checkinscontroller #new_location").hide();
+        $("#checkinscontroller #new_location").dialog("close");
       }
     });
   });
-  
-  var makePlace = function(place) {
-    var result = {
-      woeid: place.woeid,
-      lat: place.centroid.latitude,
-      lng: place.centroid.longitude
-    };
-    result.label = place.name
-    if (place.admin1) {
-      result.label = result.label + ", " + place.admin1.content
-    }
-    if (place.country) {
-      result.label = result.label + ", " + place.country.content;
-    }
-    return result;
-  };
 
   var callback = function(arg, callback) {
     $.getJSON("/locations", arg, function(result) {
@@ -41,8 +59,7 @@ $(function() {
           source: callback,
           minLength: 3,
           select: function(event, ui) {
-            $("#checkin_location_name").parent().children("span.location_name").html(ui.item.label);
-            $("#checkin_location_id").val(ui.item.id);
+            setLocation(ui.item.id, ui.item.label);
           }
   });
 });

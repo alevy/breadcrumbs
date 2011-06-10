@@ -35,6 +35,11 @@
     <%= f.submit "Preview", :name => :preview %>
   </div>
 <% end %>
+<div id="upload_images">
+<%= form_tag posts_path do %>
+  <%= file_field :image, :file %>
+<% end %>
+</div>
 <% if params[:preview] %>
 <div id="post_preview">
   <h3>Preview:</h3>

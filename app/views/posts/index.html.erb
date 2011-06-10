@@ -1,3 +1,6 @@
+<% content_for(:head) do %>
+<%= auto_discovery_link_tag(:rss, posts_url(:format => :rss), :title => "Amit's Travel Blog RSS Feed") %>
+<% end %>
 <% admin do %>
 <nav>
   <ul>

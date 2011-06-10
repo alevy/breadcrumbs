@@ -4,10 +4,11 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.limit(10)
 
     respond_to do |format|
       format.html # index.html.erb
+      format.rss
       format.json { render json: @posts }
     end
   end
