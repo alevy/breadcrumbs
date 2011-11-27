@@ -45,6 +45,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.1.1)
+    dalli (1.1.2)
     erubis (2.7.0)
     execjs (1.1.0)
       multi_json (~> 1.0)
@@ -120,6 +121,7 @@ PLATFORMS
 DEPENDENCIES
   capistrano
   coffee-script
+  dalli
   jquery-rails
   maruku
   pg

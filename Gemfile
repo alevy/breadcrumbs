@@ -7,6 +7,7 @@ gem 'pg', :group => :production
 
 # Plugins etc
 gem 'maruku'
+gem 'dalli'
 
 # Asset template engines
 gem 'sass'
