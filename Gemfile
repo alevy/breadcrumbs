@@ -1,8 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.0.rc1'
-
-gem 'sqlite3', :group => :development
 gem 'pg', :group => :production
 
 # Plugins etc
@@ -25,6 +23,10 @@ gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+group :development, :test do
+  gem "sqlite3-ruby", :require => "sqlite3"
+end
 
 group :test do
   # Pretty printed test output
