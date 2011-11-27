@@ -99,6 +99,7 @@ GEM
     rake (0.9.2.2)
     rdoc (3.11)
       json (~> 1.4)
+    recaptcha (0.3.1)
     sass (3.1.10)
     sprockets (2.0.3)
       hike (~> 1.2)
@@ -132,6 +133,7 @@ DEPENDENCIES
   maruku
   pg
   rails (= 3.1.0)
+  recaptcha
   sass
   sqlite3-ruby
   therubyracer-heroku (~> 0.8.0)

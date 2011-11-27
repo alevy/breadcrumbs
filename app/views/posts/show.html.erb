@@ -15,7 +15,7 @@
   <% if !@post.comments.approved.blank? %>
     <%= pluralize @post.comments.approved.size, "response" %> to <em><%= @post.title %></em>
     <ol>
-    <% @post.comments.each do |comment| %>
+    <% @post.comments.approved.each do |comment| %>
       <li id="comment-<%= comment.id %>">
         <p class="name">
           <%= image_tag gravatar(comment.email), :height => 40, :width => 40 %>

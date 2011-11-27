@@ -25,6 +25,10 @@
     <%= f.label :website %><br/>
     <%= f.text_field :website, :placeholder => "http://www.example.com" %>
   </div>
+  
+  <div class="field">
+    <%= recaptcha_tags %>
+  </div>
 
   <div class="field required">
     <%= f.label :comment %><br/>
