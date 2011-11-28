@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
   before_filter :authenticate!, :except => [:index, :show]
+  cache_sweeper :post_sweeper
   
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.limit(10)
+    @posts = Rails.cache.fetch("Post.all") { Post.limit(10).all }
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,8 +18,6 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = Post.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @post }

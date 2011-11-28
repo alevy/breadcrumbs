@@ -1,21 +1,22 @@
+<% cache(:action_suffix => (admin? ? "admin" : "guest")) do%>
 <div class="post">
-  <h1><%= link_to @post.title, @post %></h1>
-  <%= render :partial => "posts/details", :locals => {:post => @post } %>
+  <h1><%= link_to post.title, post %></h1>
+  <%= render :partial => "posts/details", :locals => {:post => post } %>
   <% admin do %>
   <nav>
     <ul>
-      <li><%= link_to "Edit Post", edit_post_path(@post) %></li>
-      <li><%= link_to "Delete Post", @post, :method => :delete, :confirm => "Are you sure?" %></li>
+      <li><%= link_to "Edit Post", edit_post_path(post) %></li>
+      <li><%= link_to "Delete Post", post, :method => :delete, :confirm => "Are you sure?" %></li>
   </nav>
   <% end %>
   <div class="body">
-    <%= raw Maruku.new(@post.body).to_html %>
+    <%= raw Maruku.new(post.body).to_html %>
   </div>
   <div class="comments">
-  <% if !@post.comments.approved.blank? %>
-    <%= pluralize @post.comments.approved.size, "response" %> to <em><%= @post.title %></em>
+  <% if !post.approved_comments.empty? %>
+    <%= pluralize post.approved_comments.size, "response" %> to <em><%= post.title %></em>
     <ol>
-    <% @post.comments.approved.each do |comment| %>
+    <% post.approved_comments.each do |comment| %>
       <li id="comment-<%= comment.id %>">
         <p class="name">
           <%= image_tag gravatar(comment.email), :height => 40, :width => 40 %>
@@ -41,7 +42,8 @@
   <div id="new_comment_form">
     <h3>Leave a comment</h3>
     <p>Your email address will not be published.</p>
-    <%= render :partial => "comments/form", :locals => {:comment => @comment || Comment.new(:post => @post) } %>
+    <%= render :partial => "comments/form", :locals => {:comment => @comment || Comment.new(:post => post) } %>
   </div>
   </div>
 </div>
+<% end %>

@@ -8,4 +8,8 @@ module PostsHelper
     time.strftime("%I:%M%p")
   end
   
+  def post
+    @post ||= Post.find(params[:id])
+  end
+  
 end

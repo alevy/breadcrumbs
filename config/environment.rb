@@ -1,4 +1,5 @@
-require 'net/http'
+require 'net/http' # For Recaptcha
+
 # Load the rails application
 require File.expand_path('../application', __FILE__)
 

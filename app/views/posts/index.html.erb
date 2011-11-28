@@ -9,4 +9,6 @@
   </ul>
 </nav>
 <% end %>
-<%= render :partial => "posts", :locals => { :posts => @posts }%>
+<% cache('all_posts') do %>
+  <%= render(:partial => "posts", :locals => { :posts => @posts } ) %>
+<% end %>

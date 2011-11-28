@@ -1,7 +1,6 @@
 class Comment < ActiveRecord::Base
   belongs_to :post
   
-  scope :approved, where(:approved => true)
   scope :pending, where(:approved => false)
   
   def website=(url)

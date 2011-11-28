@@ -3,10 +3,14 @@ class Post < ActiveRecord::Base
   belongs_to :checkin
   belongs_to :trip
   
-  default_scope order("created_at DESC")
+  default_scope order("posts.created_at DESC")
   
   validates_presence_of :title, :on => :create, :message => "can't be blank"
   validates_presence_of :body, :on => :create, :message => "can't be blank"
+  
+  def approved_comments
+    @approved_comments ||= self.comments.select(&:approved)
+  end
   
   class TripIdConsistencyValidator
     def validate(post)

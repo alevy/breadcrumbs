@@ -1,7 +1,7 @@
 <p class="byline">
   Posted on <%= link_to date_str(post.created_at), post, :title => time_str(post.created_at), :rel => :bookmark %>
   from
-  <%- if post.checkin %>
+  <%- if post.checkin_id %>
   <%= link_to post.checkin.location.name, post.checkin %>
   <%- else %>
   Unknown
