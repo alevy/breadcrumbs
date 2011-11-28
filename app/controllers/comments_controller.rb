@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :authenticate!, :except => [:create]
+  cache_sweeper :comment_sweeper
   
   def index
     @comments = Comment.pending

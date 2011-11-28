@@ -15,6 +15,7 @@ class PostSweeper < ActionController::Caching::Sweeper
   
   private
   def expire_cache_for(post)
+    expire_posts_cache
     expire_fragment(:controller => :posts, :action => :show, :id => post.id, :action_suffix => "admin")
     expire_fragment(:controller => :posts, :action => :show, :id => post.id, :action_suffix => "guest")
   end
