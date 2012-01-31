@@ -6,6 +6,7 @@ gem 'pg', :group => :production
 # Plugins etc
 gem 'maruku'
 gem 'dalli'
+gem 'memcachier'
 gem "recaptcha", :require => "recaptcha/rails"
 
 # Asset template engines
