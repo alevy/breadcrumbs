@@ -61,7 +61,7 @@ GEM
       treetop (~> 1.4.8)
     maruku (0.6.0)
       syntax (>= 1.0.0)
-    memcachier (0.0.0)
+    memcachier (0.0.1)
     mime-types (1.17.2)
     multi_json (1.0.3)
     net-scp (1.0.4)
