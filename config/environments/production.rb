@@ -51,7 +51,7 @@ Breadcrumbs::Application.configure do
   config.active_support.deprecation = :notify
   
   config.action_dispatch.rack_cache = {
-    :metastore    => Dalli::Client.new(ENV["MEMCACHE_SERVERS"], :socket_timeout => 0.1),
+    :metastore    => Dalli::Client.new(ENV["MEMCACHE_SERVERS"], :socket_timeout => 0.02),
     :entitystore  => 'file:tmp/cache/rack/body',
     :allow_reload => false
   }
