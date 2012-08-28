@@ -61,6 +61,7 @@ GEM
       treetop (~> 1.4.8)
     maruku (0.6.0)
       syntax (>= 1.0.0)
+    memcachier (0.0.1)
     mime-types (1.18)
     multi_json (1.3.6)
     net-scp (1.0.4)
@@ -131,6 +132,7 @@ DEPENDENCIES
   dalli
   jquery-rails
   maruku
+  memcachier
   pg
   rails (= 3.1.0)
   recaptcha
